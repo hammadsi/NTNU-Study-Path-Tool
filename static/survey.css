@@ -7,7 +7,6 @@ html, body, h1, h2, p, ul, li, form {
 /* Set some basic styling for the body */
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #2980B9, #6DD5FA); /* Gradient background */
   margin: 0;
   padding: 0;
   display: flex;
