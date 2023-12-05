@@ -70,7 +70,7 @@ def get_subject_name(user_email,user_course_name,formatted_courses):
         chat_model = ChatOpenAI(
             model="gpt-3.5-turbo",
             openai_api_key=config.OPENAI_API_KEY,
-            max_tokens=1000
+            max_tokens=2000
         )
 
         # Query the MongoDB collection to get user data

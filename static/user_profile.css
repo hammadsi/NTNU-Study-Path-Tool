@@ -47,7 +47,7 @@ label {
 
 /* Form input fields */
 input {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -60,6 +60,7 @@ input[type="submit"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    align-items: center;
 }
 
 /* Decorate the "Edit Profile" link */

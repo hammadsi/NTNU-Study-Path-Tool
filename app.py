@@ -5,9 +5,10 @@ import os
 import plotly.express as px
 from datetime import datetime
 from functools import wraps
-from functions import is_logged_in, get_formatted_course_list  # Your existing functions.py file
-from llm_model import get_course_name,get_subject_name # Assuming get_course_name is in this file
-import config  # Import your config file
+from functions import is_logged_in, get_formatted_course_list 
+from llm_model import get_course_name,get_subject_name
+
+import config 
 from subject_llm import get_subject_name
 import pandas as pd
 
