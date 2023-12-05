@@ -1,12 +1,13 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for, session
-from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
+from typing import List
+
+import config  # Import config file
+from flask import Flask, redirect, render_template, request, session, url_for
 from langchain.chat_models import ChatOpenAI
 from langchain.output_parsers import PydanticOutputParser
+from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
 from pydantic import BaseModel, Field
-from typing import List
 from pymongo import MongoClient
-import config  # Import config file
 
 # Your MongoDB connection information
 mongo_uri = config.MONGO_URI
@@ -182,26 +183,23 @@ def get_subject_name(user_email,user_course_name,formatted_courses):
             aiInterest = user_data.get("aiInterest", "")
             dbInterest = user_data.get("dbInterest", "")
             seInterest = user_data.get("seInterest", "")
-            algoInterest = user_data.get("algoInterest", "")
-            longTermGoals = user_data.get("longTermGoals", "")
-            
             user_input = f"""
                             What initially drew you to study computer science?
-                            Answer: {initialInterest}
+                            Answer: {user_data.get("initialInterest", "")}
                             What kind of technical challenges excite you the most?
-                            Answer: {techChallenges}
+                            Answer: {user_data.get("techChallenges", "")}
                             Describe a project you've worked on that you're particularly proud of and would like to do more of.
-                            Answer: {proudProject}
+                            Answer: {user_data.get("proudProject", "")}
                             What are your thoughts on the field of Artificial Intelligence? Does the field interest you? If so, what interests you about it and what do you think we could achieve with AI?
-                            Answer: {aiInterest}
+                            Answer: {user_data.get("aiInterest", "")}
                             How important do you think data management is in today's world? Are you interested in databases or search algorithms? How can you see yourself working with data?
-                            Answer: {dbInterest}
+                            Answer: {user_data.get("dbInterest", "")}
                             Do you enjoy working on larger projects as part of a team? Are you interested in the software development lifecycle? Do you like being handed specific tasks, and achieve results frequently?
-                            Answer: {seInterest}
+                            Answer: {user_data.get("seInterest", "")}
                             Do you find joy in problem-solving or optimizing for performance? Are you interested in the theoretical aspects of computing? Do you like working in detail for optimization or on a higher level for visible results?
-                            Answer: {algoInterest}
+                            Answer: {user_data.get("algoInterest", "")}
                             Long-term Career Goals and Interests?
-                            Answer: {longTermGoals}
+                            Answer: {user_data.get("longTermGoals", "")}
                             """
 
             # Generate the input using the updated prompt.
@@ -220,4 +218,3 @@ def get_subject_name(user_email,user_course_name,formatted_courses):
             except Exception as e:
                 print("An error occurred when calling the OpenAI API:", e)
                 return "Error", "Could not fetch recommendation."
-
