@@ -1,24 +1,23 @@
-
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Interests Chart</title>
 </head>
 <body>
-    <h1>Interests Chart</h1>
+    <h1>Interests Chart Based on Student Survey Answers</h1>
+    <div class="container">
+        <!-- Uncomment this section if you want to add the form back -->
+        <!-- <form method="POST" action="/show_results">
+            <label for="user_email">Enter Email Address:</label>
+            <input type="text" name="user_email" id="user_email">
+            <input type="submit" value="Generate Chart">
+        </form> -->
 
-    <!-- Add a form to enter the email address -->
-    <!-- <form method="POST" action="/show_results">
-        <label for="user_email">Enter Email Address:</label>
-        <input type="text" name="user_email" id="user_email">
-        <input type="submit" value="Generate Chart">
-    </form>
-     -->
-    <!-- Add a div to display the chart -->
-    <div id="interests_chart">
-        {{ chart|safe }}
+        <!-- Div to display the chart -->
+        <div id="interests_chart">
+            {{ chart|safe }}
+        </div>
     </div>
 </body>
 </html>
-
-
